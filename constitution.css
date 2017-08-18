@@ -1,0 +1,184 @@
+@page {
+  @top-left {padding-top: 3em}
+  @top-right {padding-top: 3em}
+  font-family: Hind;
+  font-size: 8pt;
+}
+
+@page :left {
+  @top-left {content: counter(page)}
+  @top-right {content: " [ " string(article) " ] "}
+  margin: 6rem 7rem 5rem 5rem;
+}
+
+@page :right {
+  @top-left {content: " [ " string(article) " ] "}
+  @top-right {content: counter(page)}
+  margin: 7rem 5rem 5rem 7rem;
+}
+
+@page:first {
+  @top-left {content: ''}
+  @top-right {content: ''}
+  background: url(kozea-group-blanc.svg) 0 -2em no-repeat #1a2531;
+}
+
+@page:blank {
+  @top-left {content: ''}
+  @top-right {content: ''}
+}
+
+@page aside {
+  @top-left {content: ''}
+  @top-right {content: ''}
+}
+
+@page article {
+  @top-left {content: ''}
+  @top-right {content: ''}
+  background-color: #1a2531;
+}
+
+
+/* Structure */
+
+body {
+  color: #1c1c1c;
+  font-family: Hind;
+  font-size: 10pt;
+  line-height: 1.5;
+  margin: 0;
+}
+
+body:after {
+  background-image: linear-gradient(
+    90deg,
+    #0a7cba 0%, #0a7cba 20%,
+    #f59c30 20%, #f59c30 40%,
+    #e73c4d 40%, #e73c4d 60%,
+    #6e6186 60%, #6e6186 80%,
+    #5abdb7 80%, #5abdb7 100%
+  );
+  bottom: -5rem;
+  content: '';
+  height: 0.3em;
+  left: -7rem;
+  position: fixed;
+  right: -5rem;
+}
+
+header, aside {
+  break-before: right;
+  break-after: always;
+}
+
+header {
+  color: white;
+  line-height: 1;
+}
+
+aside {
+  page: aside;
+}
+
+header p {
+  text-align: center;
+  text-transform: lowercase;
+}
+
+main {
+  counter-reset: h2;
+}
+
+
+/* Common containers */
+
+p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+a {
+  color: inherit;
+  font-style: italic;
+  text-decoration: inherit;
+}
+
+ul {
+  margin: 1em 1.5em;
+  padding: 0;
+}
+
+dt {
+  break-after: avoid;
+  display: list-item;
+  margin: 1em;
+}
+
+dd {
+  margin: 1em 2em;
+}
+
+
+/* Headers */
+
+h1 {
+  font-size: 5em;
+  font-weight: lighter;
+  margin: 100mm 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
+  bookmark-level: none;
+}
+
+aside h2 {
+  font-size: 2em;
+  font-weight: normal;
+  margin-top: 60mm;
+}
+
+main h2 {
+  color: white;
+  counter-reset: h3;
+  break-before: right;
+  break-after: right;
+  font-size: 4em;
+  font-weight: lighter;
+  line-height: 1;
+  page: article;
+  string-set: article content();
+}
+
+main h2::before {
+  counter-increment: h2;
+  content: "[ Article " counter(h2) " ]";
+  display: block;
+  font-size: 0.5em;
+  font-weight: bold;
+  margin: 0 0 0.5em 0.15em;
+}
+
+main h3 {
+  counter-reset: h4;
+  display: table;
+  font-size: 2em;
+  font-weight: normal;
+  line-height: 1;
+}
+
+main h3::before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3) " − ";
+  display: table-cell;
+}
+
+main h4 {
+  display: table;
+  font-size: 1em;
+}
+
+main h4::before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4) " − ";
+  display: table-cell;
+}
