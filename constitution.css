@@ -3,6 +3,9 @@
   @top-right {padding-top: 3em}
   font-family: Hind;
   font-size: 8pt;
+  size: 190mm 277mm;
+  bleed: 10mm;
+  marks: crop cross;
 }
 
 @page :left {
@@ -53,18 +56,20 @@ body {
 body:after {
   background-image: linear-gradient(
     90deg,
-    #0a7cba 0%, #0a7cba 20%,
-    #f59c30 20%, #f59c30 40%,
-    #e73c4d 40%, #e73c4d 60%,
-    #6e6186 60%, #6e6186 80%,
+    #0a7cba  0%, #0a7cba  20%,
+    #f59c30 20%, #f59c30  40%,
+    #e73c4d 40%, #e73c4d  60%,
+    #6e6186 60%, #6e6186  80%,
     #5abdb7 80%, #5abdb7 100%
   );
-  bottom: -5rem;
+  border-left: 1rem solid #0a7cba;
+  border-right: 1rem solid #5abdb7;
+  bottom: -6rem;
   content: '';
-  height: 0.3em;
-  left: -7rem;
+  height: 1.3rem;
+  left: -8rem;
   position: fixed;
-  right: -5rem;
+  right: -6rem;
 }
 
 header, aside {
